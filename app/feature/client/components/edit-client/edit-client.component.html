@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Edit Client</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content [formGroup]="formGroup">
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <p>Shared Key</p>
+    </div>
+      <mat-form-field appearance="outline" style="width: 100%">
+        <mat-label>Enter shared key</mat-label>
+        <input matInput #input type="text" class="form-control" formControlName="shared_key">
+      </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <p>Business ID</p>
+    </div>
+      <mat-form-field appearance="outline" style="width: 100%">
+        <mat-label>Enter business ID</mat-label>
+        <input matInput #input type="text" class="form-control" formControlName="business_id">
+      </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <p>E-mail</p>
+    </div>
+      <mat-form-field appearance="outline" style="width: 100%">
+        <mat-label>Enter E-mail</mat-label>
+        <input matInput #input type="text" class="form-control" formControlName="email">
+      </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <p>Phone</p>
+    </div>
+      <mat-form-field appearance="outline" style="width: 100%">
+        <mat-label>Enter phone</mat-label>
+        <input matInput #input type="text" class="form-control" formControlName="phone">
+      </mat-form-field>
+  </div>
+
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="onNoClick()">OK</button>
+</div>

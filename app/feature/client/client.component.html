@@ -1,0 +1,88 @@
+<div class="content" [formGroup]="formGroup">
+  <div class="col-md-12 d-flex button">
+    <button mat-raised-button color="primary" class="buttonAction" (click)="openAddClient()">
+      <mat-icon>add</mat-icon>
+      New
+    </button>
+
+    <button mat-raised-button color="primary" class="buttonAction">
+      <mat-icon>shared-windows</mat-icon>
+      Export
+    </button>
+  </div>
+
+  <div class="col-md-12 d-flex">
+
+    <div class="col-md-12 form-row">
+      <div class="form-group col-md-7">
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Enter Shared key</mat-label>
+          <input matInput #input type="text" formControlName="shared_key" id="sharedKey" class="form-control" (input)="onInputChange()">
+        <button matSuffix mat-icon-button aria-label="Search" matTooltip="Search" (click)="consultClient()">
+          <mat-icon>search</mat-icon>
+        </button>
+        </mat-form-field>
+      </div>
+
+      <div class="button">
+        <button type="button" class="btn btn-primary" mat-raised-button color="primary" (click)="openAdvancedSearchDialog()">
+          Advanced Search
+        </button>
+      </div>
+    </div>
+
+    <app-pages-content [tittle]="'Clients'" class="col-md-12">
+
+      <div class="row col-md-12">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <ng-container matColumnDef="Shared Key">
+            <th mat-header-cell *matHeaderCellDef> Shared Key</th>
+            <td mat-cell *matCellDef="let element"
+                class="mat-cell text-center mat-align-center"> {{element.shared_key}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Business ID">
+            <th mat-header-cell *matHeaderCellDef> Business ID</th>
+            <td mat-cell *matCellDef="let element"> {{element.business_id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="E-mail">
+            <th mat-header-cell *matHeaderCellDef> E-mail</th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Phone">
+            <th mat-header-cell *matHeaderCellDef> Phone</th>
+            <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Data Added">
+            <th mat-header-cell *matHeaderCellDef> Data Added</th>
+            <td mat-cell *matCellDef="let element"> {{element.data_added}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef class="mat-header-cell text-center">
+              <mat-icon color="primary">edit</mat-icon>
+            </th>
+            <td mat-cell *matCellDef="let element" class="mat-cell text-center mat-align-center">
+              <button mat-icon-button matTooltip="Editar" (click)="openEditClient(element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell">No hay datos</td>
+          </tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+        </mat-paginator>
+
+      </div>
+    </app-pages-content>
+
+  </div>

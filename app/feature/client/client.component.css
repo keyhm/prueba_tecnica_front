@@ -1,0 +1,48 @@
+.content {
+  width: 90%;
+  margin: 29px auto;
+  padding: 15px;
+  background-color: white;
+  border-radius: 4px;
+}
+
+td, th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.button {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+.buttonAction {
+  margin: 20px 30px 30px 0;
+}
+
+
+
+.form-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-group{
+  width: 70%;
+}
+
+@media only screen and (max-width: 768px) {
+  .button {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+}

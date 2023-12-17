@@ -1,0 +1,75 @@
+<h1 mat-dialog-title>Created New Client</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+
+  <div [formGroup]="formGroup">
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <p>Name</p>
+      </div>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Enter name</mat-label>
+          <input matInput #input type="text" class="form-control" formControlName="business_id">
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <p>Phone</p>
+      </div>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Enter phone</mat-label>
+          <input matInput #input type="text"  class="form-control" formControlName="phone">
+          <mat-error *ngIf="(haveError('phone', 'pattern') && formGroup.get('phone')?.touched
+           || haveError('phone', 'minLength') && formGroup.get('phone')?.touched)">
+            {{haveError('phone', 'pattern')? '¡phone number accept only numbers!' : '¡10 min-max character!' }}</mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <p>E-mail</p>
+      </div>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Enter E-mail</mat-label>
+          <input matInput #input type="text"  class="form-control" formControlName="email">
+          <mat-error *ngIf="haveError('email', 'email')">Example of E-mail format (a@j.com) </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <p>Start date</p>
+      </div>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Enter start date</mat-label>
+          <input matInput [matDatepicker]="startDatePicker" [min]="minStartDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="startDatePicker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <p>End date</p>
+      </div>
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Enter end date</mat-label>
+          <input matInput [matDatepicker]="endDatePicker" [min]="minEndDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="endDatePicker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+  </div>
+
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="addClient()">OK</button>
+</div>
