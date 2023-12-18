@@ -137,12 +137,8 @@ export class ClientComponent implements AfterViewInit, OnInit{
       const message: string = 'Usuario no encontrado';
       this.alert.mostrarAdvertencia(message);
     } else {
-      // Aquí puedes utilizar los datos del cliente como desees
       console.log('Datos del cliente:', cliente);
-
-      // Actualizar la fuente de datos de la tabla
       this.dataSource = new MatTableDataSource<ClienteModel>([cliente]);
-
       if (this.paginator) {
         this.dataSource.paginator = this.paginator;
       }
@@ -150,10 +146,7 @@ export class ClientComponent implements AfterViewInit, OnInit{
   }
 
   public onInputChange(): void {
-    // Obtén el valor del input
     const sharedKey = this.formGroup.controls['shared_key'].value;
-
-    // Si el input está vacío, recarga la tabla
     if (!sharedKey) {
       this.consultClient();
     }
@@ -161,7 +154,6 @@ export class ClientComponent implements AfterViewInit, OnInit{
 
 
   private reloadTable(): void {
-    // Recargar la fuente de datos de la tabla
     this.dataSource.data = [...this.dataSource.data];
     this.cdr.detectChanges();
   }
